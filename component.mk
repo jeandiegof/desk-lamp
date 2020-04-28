@@ -8,7 +8,7 @@
 # COMPONENT_INCDIRS := include
 
 ## If you require any Libraries list them here
-# ARDUINO_LIBRARIES :=
+ARDUINO_LIBRARIES := WS2812
 
 ## List the names of any additional Components required for this project
 # COMPONENT_DEPENDS :=

@@ -1,18 +1,27 @@
+#include <Libraries/WS2812/WS2812.h>
+
 #include <SmingCore.h>
 
-#define LED_PIN 2 // GPIO2
+#define LED_PIN 15
 
-Timer procTimer;
-bool state = true;
+Timer timer;
 
-void blink()
+void change_color()
 {
-	digitalWrite(LED_PIN, state);
-	state = !state;
+    static bool _state = true;
+
+    if (_state) {
+        char buffer[] = "\xff\x00\x00\x00\xff\x00\x00\x00\xff";
+        ws2812_writergb(LED_PIN, buffer, sizeof(buffer));
+    } else {
+        char buffer[] = "\x20\x00\x00\x00\x20\x00\x00\x00\x20";
+        ws2812_writergb(LED_PIN, buffer, sizeof(buffer));
+    }
+
+    _state = !_state;
 }
 
 void init()
 {
-	pinMode(LED_PIN, OUTPUT);
-	procTimer.initializeMs(1000, blink).start();
+	timer.initializeMs(1000, change_color).start();
 }
