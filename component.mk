@@ -3,9 +3,11 @@
 ## Uncomment and change examples:
 
 ## Add your source directories here separated by space
-# COMPONENT_SRCDIRS := app
+COMPONENT_SRCDIRS := app/ \
+		     app/ws2812
 # COMPONENT_SRCFILES :=
-# COMPONENT_INCDIRS := include
+COMPONENT_INCDIRS := app/ \
+		     app/ws2812
 
 ## If you require any Libraries list them here
 ARDUINO_LIBRARIES := WS2812
